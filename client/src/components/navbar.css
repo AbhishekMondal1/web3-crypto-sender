@@ -1,0 +1,135 @@
+.navbar-main{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .navbar-main {
+        justify-content: center;
+    }
+}
+
+.logo-wrapper{
+    color: #fff;
+    flex: 0 1 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .logo-wrapper {
+        flex: 0.5;
+    }
+}
+
+.logo{
+    width: 8rem;
+    cursor: pointer;
+}
+
+.navbar-list{
+    color: #fff;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 1 auto;
+}
+
+@media (min-width: 768px) {
+    .navbar-list {
+        display: flex;
+    }
+}
+
+.navbar-login-btn{
+    background-color: #2952e3;
+    padding: 0.5rem 1.75rem 0.5rem 1.75rem;
+    margin: 0 1rem 0 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.navbar-login-btn:hover{
+    background-color: #2546bd;
+}
+
+.menubar-container{
+    display: flex;
+    position: relative;
+}
+
+.menu-icon{
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none;
+    }
+}
+
+.menubar-list-wrapper{
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    right: -0.5rem;
+    padding: 0.75rem;
+    width: 75vw;
+    height: 100vh;
+    --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-radius: 0.375rem;
+    color: #fff;
+    animation: slide-in 0.5s ease-out;
+
+}
+
+@media (min-width: 768px) {
+    .menubar-list-wrapper{
+        display: none;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        -webkit-transform: translateX(120%);
+        transform: translateX(120%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+.menubar-list-icon{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.menubar-list{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.menubar-lists{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+

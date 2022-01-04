@@ -1,0 +1,22 @@
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 0 0.75rem 0;
+}
+
+.loader-body{
+    border-radius: 9999px;
+    height: 8rem;
+    width: 8rem;
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: rgb(185, 28, 28 );
+    animation: spin 1s  linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
