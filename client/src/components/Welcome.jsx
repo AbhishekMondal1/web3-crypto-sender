@@ -1,31 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './welcome.css';
 import { AiFillPlayCircle } from 'react-icons/ai';
 import { SiEthereum } from 'react-icons/si';
 import { BsInfoCircle } from 'react-icons/bs';
 
 import { Loader } from './';
+import { TransactionContext } from '../context/TransactionContext';
 
-const Input = ({placeholder, name, type, value, handleChange}) =>(
-    <input 
-    placeholder={placeholder}
-    type={type}
-    step="0.001"
-    value={value}
-    onChange={()=>{handleChange}}
-    className='input-text white-glassmorphism'    
+const Input = ({ placeholder, name, type, value, handleChange }) => (
+    <input
+        placeholder={placeholder}
+        type={type}
+        step="0.001"
+        value={value}
+        onChange={() => { handleChange }}
+        className='input-text white-glassmorphism'
     />
-    
+
 )
 
 const Welcome = () => {
+    const { connectWallet, currentAccount, formData, sendTransaction, handleChange } = useContext(TransactionContext)
 
-    const connectWallet = () => {
 
-    }
-
-    const handleSubmit = () =>{
-
+    const handleSubmit = (e) => {
+        const { addressTo, amount, keyword, message} = formData;
+        e.preventDefault();
+        // if(!addressTo || !amount || !keyword || !message) return;
+        sendTransaction()
     }
 
     return (
@@ -38,13 +40,13 @@ const Welcome = () => {
                     <p className='tag-line-bottom'>
                         Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto.
                     </p>
-                    <button
+                    {!currentAccount && (<button
                         type='button'
                         onClick={connectWallet}
                         className='wallet-button'
                     >
                         <p className='wallet-button-text'>Connect Wallet</p>
-                    </button>
+                    </button>)}
                     <div className='features-grid'>
                         <div className={`feature-top-left common-style`}>Reliability</div>
                         <div className='common-style'> Security</div>
@@ -59,9 +61,9 @@ const Welcome = () => {
                         <div className='ether-card-body'>
                             <div className='ether-card-icons-wrapper'>
                                 <div className='ethereum-icon'>
-                                    <SiEthereum fontSize={21} color='#fff'/>
+                                    <SiEthereum fontSize={21} color='#fff' />
                                 </div>
-                                <BsInfoCircle fontSize={17} color='#fff'/>
+                                <BsInfoCircle fontSize={17} color='#fff' />
                             </div>
                             <div>
                                 <p className='eth-address'>
@@ -69,26 +71,26 @@ const Welcome = () => {
                                 </p>
                                 <p className='eth-address-text'>
                                     Address
-                                </p>                                
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div className='eth-form blue-glassmorphism'>
-                        <Input placeholder="address To" name="addressTo" type='text' handleChange={()=>{}} />
-                        <Input placeholder="amount (ETH)" name="amount" type='number' handleChange={()=>{}} />
-                        <Input placeholder="Keyword (GIF)" name="keyword" type='text' handleChange={()=>{}} />
-                        <Input placeholder="Enter message" name="message" type='text' handleChange={()=>{}} />
+                        <Input placeholder="address To" name="addressTo" type='text' handleChange={handleChange} />
+                        <Input placeholder="amount (ETH)" name="amount" type='number' handleChange={handleChange} />
+                        <Input placeholder="Keyword (GIF)" name="keyword" type='text' handleChange={handleChange} />
+                        <Input placeholder="Enter message" name="message" type='text' handleChange={handleChange} />
                         <div className='form-end-line'></div>
                         {false ? (
-                            <Loader/>
-                        ): (
+                            <Loader />
+                        ) : (
                             <button type='button'
-                            onClick={handleSubmit}
-                            className='send-ether-button'
+                                onClick={handleSubmit}
+                                className='send-ether-button'
                             >Send Now
                             </button>
                         )}
-                        <div/>
+                        <div />
                     </div>
                 </div>
             </div>
