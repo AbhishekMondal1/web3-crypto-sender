@@ -16,6 +16,7 @@ const getEthereumContract = () => {
         signer,
         transactionContract
     })
+    return transactionContract;
 }
 
 export const TransactionProvider = ({ children }) => {
@@ -25,6 +26,7 @@ export const TransactionProvider = ({ children }) => {
     const [transactionCount, setTransactionCount] = useState(localStorage.getItem('transactionCount'))
     
     const handleChange = (e, name) =>{
+        console.log(`e ${e.target.value} name ${name}`)
         setFormData((prevState) => ({...prevState, [name]: e.target.value}))
     }
     const checkIfWalletIsConnected = async () => {
@@ -63,11 +65,10 @@ export const TransactionProvider = ({ children }) => {
             const { addressTo, amount, keyword, message} = formData;
 
             const transactionContract = getEthereumContract();
-
             const parsedAmount = ethers.utils.parseEther(amount);
 
             await ethereum.request({
-                method: 'eth_sendtransaction',
+                method: 'eth_sendTransaction',
                 params: [{
                     from: currentAccount,
                     to: addressTo,

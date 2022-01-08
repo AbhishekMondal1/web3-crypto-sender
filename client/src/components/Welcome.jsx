@@ -13,7 +13,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
         type={type}
         step="0.001"
         value={value}
-        onChange={() => { handleChange }}
+        onChange={(e) => { handleChange(e, name) }}
         className='input-text white-glassmorphism'
     />
 
@@ -26,7 +26,7 @@ const Welcome = () => {
     const handleSubmit = (e) => {
         const { addressTo, amount, keyword, message} = formData;
         e.preventDefault();
-        // if(!addressTo || !amount || !keyword || !message) return;
+        if(!addressTo || !amount || !keyword || !message) return;
         sendTransaction()
     }
 
