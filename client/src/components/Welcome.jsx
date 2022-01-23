@@ -5,6 +5,7 @@ import { SiEthereum } from 'react-icons/si';
 import { BsInfoCircle } from 'react-icons/bs';
 
 import { Loader } from './';
+import { shortenAddress } from '../utils/shortenAddress';
 import { TransactionContext } from '../context/TransactionContext';
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
@@ -24,9 +25,9 @@ const Welcome = () => {
 
 
     const handleSubmit = (e) => {
-        const { addressTo, amount, keyword, message} = formData;
+        const { addressTo, amount, keyword, message } = formData;
         e.preventDefault();
-        if(!addressTo || !amount || !keyword || !message) return;
+        if (!addressTo || !amount || !keyword || !message) return;
         sendTransaction()
     }
 
@@ -67,7 +68,7 @@ const Welcome = () => {
                             </div>
                             <div>
                                 <p className='eth-address'>
-                                    0xab7fb2...
+                                    {shortenAddress(currentAccount)}
                                 </p>
                                 <p className='eth-address-text'>
                                     Address
