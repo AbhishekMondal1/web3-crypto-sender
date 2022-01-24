@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import './transactions.css';
 import { TransactionContext } from '../context/TransactionContext';
 import { shortenAddress } from '../utils/shortenAddress';
-import dummyData from '../utils/dummyData';
+import useFetch from '../hooks/useFetch';
 
 const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
+    const gifUrl = useFetch({ keyword })
     return (
         <div className='transaction-card-size'>
             <div className='transaction-card-main'>
@@ -21,10 +22,11 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
                             <br />
                             <p className='transaction-para'>Message: {message}</p>
                         </>)}
+                </div>
+                <img src={gifUrl || url} alt="gif" className='w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover' />
 
-                    <div className='transaction-time-wrapper'>
-                        <p className='transaction-time'>{timestamp}</p>
-                    </div>
+                <div className='transaction-time-wrapper'>
+                    <p className='transaction-time'>{timestamp}</p>
                 </div>
             </div>
         </div>
@@ -32,7 +34,7 @@ const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, 
 }
 
 const Transactions = () => {
-    const { currentAccount } = useContext(TransactionContext);
+    const { currentAccount, transactions } = useContext(TransactionContext);
 
     return (
         <div className='transaction-container gradient-bg-transactions'>
@@ -42,13 +44,10 @@ const Transactions = () => {
                 ) : (<h3 className='transaction-heading'>Connect your account to see the latest transactions</h3>)}
 
                 <div className='transaction-card-wrapper'>
-                    {dummyData.reverse().map((transaction, i) => (
+                    {transactions.reverse().map((transaction, i) => (
                         <TransactionCard key={i} {...transaction} />
                     ))}
                 </div>
-                {/* Latest Transactions*/}
-                { /*Connect  your account to see your latest transactions.*/}
-
             </div>
         </div>
     )

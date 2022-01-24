@@ -1,0 +1,116 @@
+.footer-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .footer-container {
+        justify-content: center;
+    }
+}
+
+.footer-top-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .footer-top-wrapper {
+        flex-direction: row;
+    }
+}
+
+.footer-logo-wrapper {
+    display: flex;
+    flex: 0.5 0.5 0%;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 8rem;
+}
+
+.footer-links-wrapper {
+    display: flex;
+    flex: 1 1 0%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .footer-links-wrapper {
+        margin-top: 0px;
+    }
+}
+
+.footer-link {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.footer-contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1.25rem;
+}
+
+.footer-contact {
+    color: #fff;
+    ont-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
+
+.separator {
+    width: 100%;
+    height: 0.25px;
+    background-color: rgb(156 163 175);
+    margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .separator {
+        width: 90%;
+    }
+}
+
+.footer-copyright-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .footer-copyright-wrapper {
+        width: 90%;
+    }
+}
+
+.footer-copyright {
+    color: #fff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
